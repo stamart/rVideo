@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+springBoot {
+    mainClass = 'pl.orangeretail.gofiber.server.Start'
+}
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+configurations.all {
+    exclude module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+//    compile files('../../ProjektyPeerNG/PeerNGAndroidObiekty/dist/PeerNGAndroidObiekty.jar')
+//    compile files('../../ProjektyPeerNG/PeerNGObiekty/dist/PeerNGObiekty.jar')
+//    compile files('../../ProjektyPeerNG/BazaNG_Emaile_HTML/dist/BazaNG_Emaile_HTML.jar')
+//    compile files('../../ProjektyPeerNG/BazaNG/dist/BazaNG.jar')
+    compile 'org.springframework.boot:spring-boot-starter-web:1.4.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-jersey:1.4.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-log4j2:1.4.1.RELEASE'
+    compile 'org.apache.logging.log4j:log4j-web:2.6.2'
+    compile 'org.apache.httpcomponents:httpcore:4.4.1'
+    compile 'org.apache.httpcomponents:httpclient:4.5'
+    compile 'org.apache.commons:commons-collections4:4.0'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'commons-lang:commons-lang:2.6'
+    compile 'commons-net:commons-net:3.3'
+    compile 'commons-io:commons-io:2.4'
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+    compile group: 'commons-lang', name: 'commons-lang', version: '2.3'
+    compile group: 'com.lmax', name: 'disruptor', version: '3.3.5'
+
+}

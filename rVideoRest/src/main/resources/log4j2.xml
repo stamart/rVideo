@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <RollingFile  name="LogFile" fileName="/var/log/goFiber/log_main_output.log" filePattern="/var/log/goFiber/${date:yyyy-MM}/log_main-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="ErrorLogFile" fileName="/var/log/goFiber/log_error.log" filePattern="/var/log/goFiber/${date:yyyy-MM}/log_error-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="TraceFile" fileName="/var/log/goFiber/log_trace.log" filePattern="/var/log/goFiber/${date:yyyy-MM}/log_trace-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+        <!--<Syslog name="SysLog" facility="local4" format="RFC5424" newLine="true" host="localhost" port="514" protocol="TCP"/>-->
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console" />
+            <!--<AppenderRef ref="LogFile" level="all"/>-->
+            <!--<AppenderRef ref="SysLog" level="all"/>-->
+            <AppenderRef ref="ErrorLogFile" level="ERROR"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
